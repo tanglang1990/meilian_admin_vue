@@ -17,18 +17,14 @@
         mode="inline"
         :default-selected-keys="['1']"
       >
-        <a-menu-item key="1">
-          <a-icon type="user" />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <a-icon type="video-camera" />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <a-icon type="upload" />
-          <span>nav 3</span>
-        </a-menu-item>
+        <a-sub-menu key="1">
+          <span slot="title">
+            <a-icon type="user" /><span>用户管理</span></span>
+          <a-menu-item key="2">
+            <a-icon type="appstore" />
+            用户列表
+          </a-menu-item>
+        </a-sub-menu>
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -38,6 +34,7 @@
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
           @click="() => (collapsed = !collapsed)"
         />
+        <a-button @click="logout()">退出</a-button>
       </a-layout-header>
       <a-layout-content class="content">
         Content
@@ -50,6 +47,12 @@ export default {
   data() {
     return {
       collapsed: false
+    }
+  },
+  methods: {
+    logout() {
+      window.sessionStorage.clear()
+      this.$router.push('/login')
     }
   }
 }
@@ -85,9 +88,15 @@ export default {
 }
 
 .header {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
   background: #fff !important ;
-  padding: 0 !important ;
+  padding: 0px 10px !important;
 }
+
 .content {
   margin: 10px;
   padding: 10px;
