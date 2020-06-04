@@ -1,7 +1,10 @@
 <template>
   <a-layout id="main">
     <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
-      <div class="title">媒恋CMS</div>
+      <div class="title">
+        <img src="../assets/heima.png" alt="">
+        <span v-show="!collapsed">媒恋CMS</span>
+      </div>
       <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
         <a-menu-item key="1">
           <a-icon type="user" />
@@ -64,4 +67,13 @@ export default {
   margin: 16px;
   text-align: center;
 }
+
+.title > img {
+  height: 32px;
+}
+
+.title > span {
+  margin-left: 5px;
+}
+
 </style>
