@@ -1,11 +1,22 @@
 <template>
   <a-layout id="main">
-    <a-layout-sider v-model="collapsed" :trigger="null" collapsible>
+    <a-layout-sider
+      v-model="collapsed"
+      :trigger="null"
+      collapsible
+    >
       <div class="title">
-        <img src="../assets/heima.png" alt="">
+        <img
+          src="../assets/heima.png"
+          alt=""
+        >
         <span v-show="!collapsed">媒恋CMS</span>
       </div>
-      <a-menu theme="dark" mode="inline" :default-selected-keys="['1']">
+      <a-menu
+        theme="dark"
+        mode="inline"
+        :default-selected-keys="['1']"
+      >
         <a-menu-item key="1">
           <a-icon type="user" />
           <span>nav 1</span>
@@ -21,16 +32,14 @@
       </a-menu>
     </a-layout-sider>
     <a-layout>
-      <a-layout-header style="background: #fff; padding: 0">
+      <a-layout-header class="header">
         <a-icon
           class="trigger"
           :type="collapsed ? 'menu-unfold' : 'menu-fold'"
           @click="() => (collapsed = !collapsed)"
         />
       </a-layout-header>
-      <a-layout-content
-        :style="{ margin: '10px', padding: '10px', background: '#fff', minHeight: '280px' }"
-      >
+      <a-layout-content class="content">
         Content
       </a-layout-content>
     </a-layout>
@@ -45,9 +54,9 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="less">
 #main {
-    height: 100%;
+  height: 100%;
 }
 #main .trigger {
   font-size: 18px;
@@ -66,14 +75,23 @@ export default {
   color: #fff;
   margin: 16px;
   text-align: center;
+  > img {
+    height: 32px;
+  }
+  > span {
+    margin-left: 5px;
+    height: 32px;
+  }
 }
 
-.title > img {
-  height: 32px;
+.header {
+  background: #fff !important ;
+  padding: 0 !important ;
 }
-
-.title > span {
-  margin-left: 5px;
+.content {
+  margin: 10px;
+  padding: 10px;
+  background: #fff;
+  min-height: 280px !important ;
 }
-
 </style>
